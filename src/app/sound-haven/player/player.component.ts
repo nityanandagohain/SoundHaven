@@ -8,7 +8,7 @@ import { Howl } from 'howler';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-  public songSelected: boolean = true;
+  public songSelected: boolean = false;
   public song: Howl;
   constructor(private _electronService: ElectronService, private chRef: ChangeDetectorRef) {
 
@@ -17,7 +17,8 @@ export class PlayerComponent implements OnInit {
       ipc.on('mp3-file', (event, arg) => {
           console.log(arg);
           this.song = new Howl({
-            src: [arg]
+            src: [arg],
+            autoplay: true
           })
           this.chRef.detectChanges();
       });
@@ -34,4 +35,23 @@ export class PlayerComponent implements OnInit {
     this.song.pause();
     this.songSelected = !this.songSelected;
   }
+  stopSong(){
+		this.song.stop();
+  }
+  volUp(){
+		var vol = this.song.volume();
+		vol += 0.1;
+		if (vol > 1) {
+			vol = 1;
+		}
+		this.song.volume(vol);
+	}
+  volDown(){
+    var vol = this.song.volume();
+		vol -= 0.1;
+		if (vol < 0) {
+			vol = 0;
+		}
+		this.song.volume(vol);
+	}
 }
