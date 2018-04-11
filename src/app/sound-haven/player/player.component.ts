@@ -8,6 +8,7 @@ import { Howl } from 'howler';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
+
   public song: Howl;
 
   public trackPlaying: boolean = false;
@@ -17,6 +18,7 @@ export class PlayerComponent implements OnInit {
   public trackList: any = []; //file: && howl :
 
   private currentIndex:number = 0; //Index of the track which is playing
+
 
   constructor(private _electronService: ElectronService, private chRef: ChangeDetectorRef) {
 
@@ -53,8 +55,6 @@ export class PlayerComponent implements OnInit {
     }
 
     this.song.play();
+
   }
-
-
-
 }
