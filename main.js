@@ -26,20 +26,19 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
 
     //Menu
     const template = [
-      {},
       {
         label: 'File',
         submenu: [
           {
             label: 'Open Folder',
-            accelerator : 'CommandOrControl+o',
+            accelerator : 'Alt+o',
             click:function(){
               openFolderDialog();
             }
           },
           {
             label: 'Open File',
-            accelerator : 'CommandOrControlShift+o',
+            accelerator : 'CommandOrControl+o',
             click: function(){
               openFileDialog();
             }
@@ -110,20 +109,15 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
 
   function openFileDialog(){
     dialog.showOpenDialog(win, {
+      filters: [
+        { name: 'Audio Files', extensions: ['mp3'] }
+      ],
       properties: ['openFile']
     }, function(filePath){
       if(filePath){
-        if(filePath[0].substr(-4) === '.mp3'){
           let arr = [];
           arr.push(filePath[0]);
           win.webContents.send('mp3-file', arr);
-        }else{
-          const notifier = require('node-notifier');
-          notifier.notify({
-            title: 'SoundHaven Error',
-            message: 'You opened a fle which is not an mp3 file'
-          })
-        }
       }
     });
   }
