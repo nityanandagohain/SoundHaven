@@ -91,19 +91,19 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
         // properties: ['openFile']
         properties: ['openDirectory']
       },function(filePath){
-        // console.log(filePath[0]);
-        // win.webContents.send('mp3-file', filePath[0]);
-        fs.readdir(filePath[0], function(err, files){
-          var arr = [];
-          for(var i=0;i<files.length;i++){
-            if(files[i].substr(-4) === '.mp3'){
-              arr.push(filePath[0] + '/' + files[i]);
+        if(filePath){
+          fs.readdir(filePath[0], function(err, files){
+            var arr = [];
+            for(var i=0;i<files.length;i++){
+              if(files[i].substr(-4) === '.mp3'){
+                arr.push(filePath[0] + '/' + files[i]);
+              }
             }
-          }
-          console.log("folder");
-          console.log(arr);
-          win.webContents.send('mp3-file', arr);
-        }); //sending the opened file to ipc renderer
+            console.log("folder");
+            console.log(arr);
+            win.webContents.send('mp3-file', arr); //sending the opened file to ipc renderer
+          });
+        }
       })
     );
   }
@@ -112,16 +112,18 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
     dialog.showOpenDialog(win, {
       properties: ['openFile']
     }, function(filePath){
-      if(filePath[0].substr(-4) === '.mp3'){
-        let arr = [];
-        arr.push(filePath[0]);
-        win.webContents.send('mp3-file', arr);
-      }else{
-        const notifier = require('node-notifier');
-        notifier.notify({
-          title: 'SoundHaven Error',
-          message: 'You opened a fle which is not an mp3 file'
-        })
+      if(filePath){
+        if(filePath[0].substr(-4) === '.mp3'){
+          let arr = [];
+          arr.push(filePath[0]);
+          win.webContents.send('mp3-file', arr);
+        }else{
+          const notifier = require('node-notifier');
+          notifier.notify({
+            title: 'SoundHaven Error',
+            message: 'You opened a fle which is not an mp3 file'
+          })
+        }
       }
     });
   }

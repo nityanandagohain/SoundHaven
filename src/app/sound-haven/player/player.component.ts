@@ -26,10 +26,6 @@ export class PlayerComponent implements OnInit {
 
       ipc.on('mp3-file', (event, arg) => {
           console.log(arg);
-          this.trackPlaying = true;
-          // this.song = new Howl({
-          //   src: [arg[0]]
-          // })
           for(let i=0; i< arg.length; i++){
             this.trackList.push({file: arg[i], howl: null});
           }
@@ -40,21 +36,71 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
 
   }
-  playSong(){
+  public playSong(){
     console.log('Play called');
-    this.play();
+    this.play(this.currentIndex);
+    this.trackPlaying = true;
   }
 
-  private play = () => {
-    if(this.trackList[this.currentIndex].howl == null){
-      this.song = this.trackList[this.currentIndex].howl = new Howl({
-        src: [this.trackList[this.currentIndex].file]
+  public pauseSong(){
+    console.log('Pause called');
+    this.pause();
+    this.trackPlaying = false;
+  }
+
+  public playNext(){
+    console.log("Next calles");
+    this.next(this.currentIndex);
+  }
+
+  public playPrev(){
+    console.log("Prev called");
+    this.prev(this.currentIndex);
+  }
+
+  private play = (index) => {
+    if(this.trackList[index].howl == null){
+      this.song = this.trackList[index].howl = new Howl({
+        src: [this.trackList[index].file]
       })
     }else{
-      this.song = this.trackList[this.currentIndex].howl;
+      this.song = this.trackList[index].howl;
     }
-
     this.song.play();
-
   }
+
+  private pause = () => {
+    if(this.song){
+      this.song.pause();
+    }
+  }
+
+  private next = (index) => {
+    if(this.song){
+      this.song.stop();
+    }
+    if(index >= this.trackList.length-1){
+      index = 0;
+    }else{
+      index++;
+    }
+    this.currentIndex = index;
+    this.play(index);
+  }
+
+  private prev = (index) => {
+    if(this.song){
+      this.song.stop();
+    }
+    if(index <= 0){
+      index = this.trackList.length-1;
+    }else{
+      index--;
+    }
+    this.currentIndex = index;
+    this.play(index);
+  }
+
+
+
 }
