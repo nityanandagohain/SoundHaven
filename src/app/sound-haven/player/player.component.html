@@ -1,4 +1,6 @@
 <p>
-  SoundHaven works!
-  <button (click)="playSong()">play</button>
+  <button (click)="playPrev()">Prev</button>
+  <button *ngIf="!trackPlaying" (click)="playSong()">Play</button>
+  <button *ngIf="trackPlaying" (click)="pauseSong()">Pause</button>
+  <button (click)="playNext()">Next</button>
 </p>
