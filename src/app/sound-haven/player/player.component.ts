@@ -8,23 +8,27 @@ import { Howl } from 'howler';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
+  
+  public tDisplay : string;
+  public tDuration : string;
+  public trackName: string;
+  public trackNo: number;
 
-  public song: Howl;
+  public song: Howl; 
 
   public trackPlaying: boolean = false;
   public trackListVisible: boolean = false;
-  public timer: string = "0.00";
-  public trackName: string;
-  public trackList: any = []; //file: && howl :
+ // public timer: string = "0.00";
+  public trackList: any = [];      //file: && howl :
 
-  private currentIndex:number = 0; //Index of the track which is playing
+  private currentIndex: number = 0; //Index of the track which is playing
 
 
   constructor(private _electronService: ElectronService, private chRef: ChangeDetectorRef) {
 
       const ipc = this._electronService.ipcRenderer;
 
-      ipc.on('mp3-file', (event, arg) => {
+      ipc.on('mp3-file', (event, arg) => {                    //recieve contents from win.webcontents() via ipcRenderer
           console.log(arg);
           for(let i=0; i< arg.length; i++){
             this.trackList.push({file: arg[i], howl: null});
@@ -39,7 +43,7 @@ export class PlayerComponent implements OnInit {
   public playSong(){
     console.log('Play called');
     this.play(this.currentIndex);
-    this.trackPlaying = true;
+    this.trackPlaying = true; 
   }
 
   public pauseSong(){
@@ -64,14 +68,33 @@ export class PlayerComponent implements OnInit {
     this.prev(this.currentIndex);
   }
 
+  public shuffle(){
+    this.stop();
+    console.log("Shuffle called");
+    this.play(this.currentIndex = Math.floor(Math.random() * this.trackList.length));
+  }
+
+  public display(){
+    setInterval(() => {
+      this.tDisplay = this.formatTime(this.song.seek());
+    }, 1000);
+    var sym = (this.trackList[this.trackNo].file).lastIndexOf('/');
+    this.trackName = (this.trackList[this.trackNo].file).substring(sym+1);
+  }
+
   private play = (index) => {
     if(this.trackList[index].howl == null){
+      this.trackNo = index;
       this.song = this.trackList[index].howl = new Howl({
-        src: [this.trackList[index].file]
+        src: [this.trackList[index].file],
+        onload: () => {
+          this.tDuration = this.formatTime(Math.round(this.song.duration()));
+        }
       })
     }else{
       this.song = this.trackList[index].howl;
     }
+    this.display();
     this.song.play();
   }
 
@@ -113,6 +136,10 @@ export class PlayerComponent implements OnInit {
     this.play(index);
   }
 
-
+  private formatTime = (secs) => {
+    var minutes = Math.floor(secs / 60) || 0;
+    var seconds = Math.trunc((secs - minutes * 60)) || 0;
+    return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  }
 
 }
