@@ -48,8 +48,14 @@ export class PlayerComponent implements OnInit {
     this.trackPlaying = false;
   }
 
+  public stopSong(){
+    console.log('Stop called');
+    this.stop();
+    this.trackPlaying = false;
+  }
+
   public playNext(){
-    console.log("Next calles");
+    console.log("Next called");
     this.next(this.currentIndex);
   }
 
@@ -72,6 +78,12 @@ export class PlayerComponent implements OnInit {
   private pause = () => {
     if(this.song){
       this.song.pause();
+    }
+  }
+
+  private stop = () => {
+    if(this.song){
+      this.song.stop();
     }
   }
 

@@ -2,5 +2,6 @@
   <button (click)="playPrev()">Prev</button>
   <button *ngIf="!trackPlaying" (click)="playSong()">Play</button>
   <button *ngIf="trackPlaying" (click)="pauseSong()">Pause</button>
+  <button (click)="stopSong()">Stop</button>
   <button (click)="playNext()">Next</button>
 </p>
