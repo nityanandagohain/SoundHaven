@@ -91,16 +91,17 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
         properties: ['openDirectory']
       },function(filePath){
         if(filePath){
+          console.log(filePath[0]);
           fs.readdir(filePath[0], function(err, files){
             var arr = [];
             for(var i=0;i<files.length;i++){
               if(files[i].substr(-4) === '.mp3'){
                 arr.push(filePath[0] + '/' + files[i]);
-              }
+                }
             }
-            console.log("folder");
-            console.log(arr);
-            win.webContents.send('mp3-file', arr); //sending the opened file to ipc renderer
+            //console.log("folder");
+            //console.log(files);
+            win.webContents.send('mp3-file', arr); //sending the opened file to renderer process through ipc renderer via 'mp3-file'
           });
         }
       })
@@ -116,8 +117,11 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
     }, function(filePath){
       if(filePath){
           let arr = [];
+          //console.log(filePath);
           arr.push(filePath[0]);
-          win.webContents.send('mp3-file', arr);
+          //console.log(win.webContents);
+          //console.log(arr);
+          win.webContents.send('mp3-file', arr);  //sending the opened file to renderer process through ipc renderer via 'mp3-file'
       }
     });
   }

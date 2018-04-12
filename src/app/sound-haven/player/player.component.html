@@ -1,7 +1,10 @@
-<p>
+<div>
   <button (click)="playPrev()">Prev</button>
   <button *ngIf="!trackPlaying" (click)="playSong()">Play</button>
   <button *ngIf="trackPlaying" (click)="pauseSong()">Pause</button>
   <button (click)="stopSong()">Stop</button>
   <button (click)="playNext()">Next</button>
-</p>
+  <button (click)="shuffle()">Shuffle</button>
+  <h1><strong>Now Playing</strong> : {{trackName}}</h1>
+  <h1>{{tDisplay}} | {{tDuration}}</h1>
+</div>
