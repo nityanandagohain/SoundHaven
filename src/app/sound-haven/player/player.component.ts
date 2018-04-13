@@ -71,6 +71,7 @@ export class PlayerComponent implements OnInit {
   public shuffle(){
     this.stop();
     console.log("Shuffle called");
+    this.trackPlaying = true;
     this.play(this.currentIndex = Math.floor(Math.random() * this.trackList.length));
   }
 
