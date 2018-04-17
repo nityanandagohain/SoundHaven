@@ -84,7 +84,13 @@ export class PlayerComponent implements OnInit {
   }
 
   private play = (index) => {
-    if(this.trackList[index].howl == null){
+    if(!this.trackList.length){
+      console.log("No songs to play");
+      let notification = new Notification('SoundHaven',{
+        body: 'No songs to play'
+      })
+      return;      
+    }else if(this.trackList[index].howl == null){
       this.trackNo = index;
       this.song = this.trackList[index].howl = new Howl({
         src: [this.trackList[index].file],
