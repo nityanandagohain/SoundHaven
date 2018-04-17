@@ -25,60 +25,63 @@ export class TrackService {
   }
 
   public play = () => {
-    if(!this.trackList.length){
+    if (!this.trackList.length) {
       console.log("No songs to play");
-      let notification = new Notification('SoundHaven',{
+      let notification = new Notification('SoundHaven', {
         body: 'No songs to play'
-      })
-      return;      
-    }else if(this.trackList[this.currentIndex].howl == null){
+      });
+      return -1;
+    } else if (this.trackList[this.currentIndex].howl == null) {
       this.song = this.trackList[this.currentIndex].howl = new Howl({
         src: [this.trackList[this.currentIndex].file]
       })
-    }else{
+    } else {
       this.song = this.trackList[this.currentIndex].howl;
     }
     // this.display();
     this.song.play();
+    return 0;
   }
 
   public pause = () => {
-    if(this.song){
+    if (this.song) {
       this.song.pause();
     }
   }
 
   public stop = () => {
-    if(this.song){
+    if (this.song) {
       this.song.stop();
     }
   }
 
   public next = () => {
-    if(this.song){
+    if (this.song) {
       this.song.stop();
     }
-    if(this.currentIndex >= this.trackList.length-1){
+    if (this.currentIndex >= this.trackList.length - 1) {
       this.currentIndex = 0;
-    }else{
+    } else {
       this.currentIndex++;
     }
-    this.play();
+    let x = this.play();
+    return x;
   }
 
   public prev = () => {
-    if(this.song){
+    if (this.song) {
       this.song.stop();
     }
-    if(this.currentIndex <= 0){
-      this.currentIndex = this.trackList.length-1;
-    }else{
+    if (this.currentIndex <= 0) {
+      this.currentIndex = this.trackList.length - 1;
+    } else {
       this.currentIndex--;
     }
-    this.play();
+    let x = this.play();
+    return x;
   }
 
-  public shuffle = () =>{
+  public shuffle = () => {
     this.currentIndex = Math.floor(Math.random() * this.trackList.length);
   }
 
@@ -88,7 +91,7 @@ export class TrackService {
     return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
   }
 
-  public returnTotalDuration= () => {
+  public returnTotalDuration = () => {
     return this.formatTime(this.song.duration());
   }
 
@@ -98,6 +101,6 @@ export class TrackService {
 
   public getTrackName = () => {
     var sym = (this.trackList[this.currentIndex].file).lastIndexOf('/');
-    return (this.trackList[this.currentIndex].file).substring(sym+1);
+    return (this.trackList[this.currentIndex].file).substring(sym + 1);
   }
 }
