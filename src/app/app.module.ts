@@ -4,6 +4,7 @@ import { NgxElectronModule } from 'ngx-electron';
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './sound-haven/player/player.component';
+import { TrackService } from './sound-haven/services/tracks/track-service.service';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { PlayerComponent } from './sound-haven/player/player.component';
     BrowserModule,
     NgxElectronModule
   ],
-  providers: [],
+  providers: [TrackService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
