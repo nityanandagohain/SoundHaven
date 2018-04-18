@@ -1,6 +1,7 @@
 import { Injectable, ApplicationRef } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { Howl } from 'howler';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class TrackService {
@@ -11,6 +12,8 @@ export class TrackService {
 
   private currentIndex: number = 0;
 
+  public trackListChange: Subject<any> = new Subject<any>(); //For the components to be in sync
+
   constructor(private _electronService: ElectronService, private appRef: ApplicationRef) {
     const ipc = this._electronService.ipcRenderer;
 
@@ -20,6 +23,7 @@ export class TrackService {
       for (let i = 0; i < arg.length; i++) {
         this.trackList.push({ file: arg[i], howl: null });
       }
+      this.trackListChange.next(this.trackList); //For the components to be in sync
       this.appRef.tick();
     });
   }
