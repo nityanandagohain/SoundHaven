@@ -1,20 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxElectronModule } from 'ngx-electron';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatIconModule, MatAutocompleteModule, MatFormFieldModule, MatSlideToggleModule, MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './sound-haven/player/player.component';
 import { TrackService } from './sound-haven/services/tracks/track-service.service';
+import { HeaderComponent } from './sound-haven/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayerComponent
+    PlayerComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    NgxElectronModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxElectronModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    MatInputModule
   ],
   providers: [TrackService],
   bootstrap: [AppComponent]

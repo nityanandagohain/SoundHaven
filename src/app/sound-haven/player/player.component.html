@@ -1,10 +1,13 @@
 <div>
-  <button (click)="playPrev()">Prev</button>
-  <button *ngIf="!trackPlaying" (click)="playSong()">Play</button>
-  <button *ngIf="trackPlaying" (click)="pauseSong()">Pause</button>
-  <button (click)="stopSong()">Stop</button>
-  <button (click)="playNext()">Next</button>
-  <button (click)="shuffle()">Shuffle</button>
-  <h1><strong>Now Playing</strong> : {{trackName}}</h1>
+  <div class="button-row">
+    <button mat-button (click)="playPrev()"><mat-icon >skip_previous</mat-icon></button>
+    <button mat-button *ngIf="!trackPlaying" (click)="playSong()"><mat-icon>play_arrow</mat-icon></button>
+    <button mat-button *ngIf="trackPlaying" (click)="pauseSong()"><mat-icon>pause</mat-icon></button>
+    <button mat-button (click)="playNext()"><mat-icon>skip_next</mat-icon></button>
+    <button mat-button (click)="stopSong()"><mat-icon>stop</mat-icon></button>
+    <button mat-button (click)="shuffle()"><mat-icon>shuffle</mat-icon></button>
+  </div>
+  <h1>
+    <strong>Now Playing</strong> : {{trackName}}</h1>
   <h1>{{tDisplay}} | {{tDuration}}</h1>
 </div>
