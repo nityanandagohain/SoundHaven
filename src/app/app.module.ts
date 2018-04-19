@@ -3,7 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxElectronModule } from 'ngx-electron';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule, MatAutocompleteModule, MatFormFieldModule, MatSlideToggleModule, MatInputModule } from '@angular/material';
+import { MatButtonModule,
+      MatCheckboxModule,
+      MatIconModule,
+      MatAutocompleteModule,
+      MatFormFieldModule, 
+      MatSlideToggleModule, 
+      MatInputModule,
+      MatProgressBarModule,
+      MatGridListModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './sound-haven/player/player.component';
@@ -31,7 +39,9 @@ import { AnimationComponent } from './sound-haven/animation/animation.component'
     MatAutocompleteModule,
     MatFormFieldModule,
     MatSlideToggleModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressBarModule,
+    MatGridListModule,
   ],
   providers: [TrackService],
   bootstrap: [AppComponent]

@@ -16,6 +16,7 @@ export class PlayerComponent implements OnInit {
   public trackName: string;
   public trackPlaying: boolean = false;
   public trackListVisible: boolean = false;
+  public value: number;
 
   constructor(private _trackService: TrackService) { };
 
@@ -75,6 +76,7 @@ export class PlayerComponent implements OnInit {
     setInterval(() => {
       this.tDisplay = this._trackService.returnCurrentDuration();
       this.tDuration = this._trackService.returnTotalDuration();
+      this.value = this._trackService.getWidth();
     }, 1000);
   }
 }

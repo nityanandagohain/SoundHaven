@@ -17,11 +17,10 @@ export class AnimationComponent implements OnInit {
   public toggle = () => {
     if (this.disp1.length > 0) {
       this.disp1 = "";
-      this.disp2 = ""
+      this.disp2 = "";
     } else {
       this.disp1 = "loader1";
       this.disp2 = "loader2";
     }
   }
-
 }
