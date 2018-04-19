@@ -1,0 +1,40 @@
+.loader-frame {
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-bottom: 5%;
+    width: 70px;
+    height: 70px;
+    position: relative;
+}
+
+.loader1 {
+    position: absolute;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border-top: 5px solid rgb(103, 31, 238);
+    border-bottom: 5px solid rgb(103, 31, 238);
+    animation: clockwisespin 2s linear infinite;
+}
+.loader2 {
+    position: absolute;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border-left: 5px solid darkturquoise;
+    border-right: 5px solid darkturquoise;
+    top: 5px;
+    left: 5px;
+    animation: anticlockwisespin 2s linear infinite;
+}
+@keyframes clockwisespin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+@keyframes anticlockwisespin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(-360deg);}
+}

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { TrackService } from '../services/tracks/track-service.service';
+import { AnimationComponent } from '../animation/animation.component';
 
 @Component({
   selector: 'app-player',
@@ -7,6 +8,8 @@ import { TrackService } from '../services/tracks/track-service.service';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
+
+  @Input() animation: AnimationComponent;
 
   public tDisplay: string = '0:00';
   public tDuration: string = '0:00';
@@ -22,6 +25,7 @@ export class PlayerComponent implements OnInit {
     console.log('Play called');
     let x = this._trackService.play();
     if (x != -1) {
+      this.animation.toggle();
       this.trackPlaying = true;
       this.display();
     }
@@ -29,6 +33,7 @@ export class PlayerComponent implements OnInit {
 
   public pauseSong() {
     console.log('Pause called');
+    this.animation.toggle();
     this._trackService.pause();
     this.trackPlaying = false;
   }

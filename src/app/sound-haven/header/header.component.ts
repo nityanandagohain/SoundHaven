@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  filterTracks(name: string) {
+  private filterTracks(name: string) {
     return this.tracks.filter(track =>
       track.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
