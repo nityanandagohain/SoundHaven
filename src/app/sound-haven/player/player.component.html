@@ -1,13 +1,37 @@
 <div>
+  <mat-grid-list cols="6">
+    <mat-grid-tile cols="1" row="1">
+      <h3 class="duration">{{tDisplay}}</h3>
+    </mat-grid-tile>
+    <mat-grid-tile cols="4" row="1">
+      <mat-progress-bar mode='determinate' [value]="value"></mat-progress-bar>  
+    </mat-grid-tile>
+    <mat-grid-tile cols="1" row="1">
+      <h3 class="duration"> {{tDuration}}</h3>
+    </mat-grid-tile>
+  </mat-grid-list>
   <div class="button-row">
-    <button mat-button (click)="playPrev()"><mat-icon >skip_previous</mat-icon></button>
-    <button mat-button *ngIf="!trackPlaying" (click)="playSong()"><mat-icon>play_arrow</mat-icon></button>
-    <button mat-button *ngIf="trackPlaying" (click)="pauseSong()"><mat-icon>pause</mat-icon></button>
-    <button mat-button (click)="playNext()"><mat-icon>skip_next</mat-icon></button>
-    <button mat-button (click)="stopSong()"><mat-icon>stop</mat-icon></button>
-    <button mat-button (click)="shuffle()"><mat-icon>shuffle</mat-icon></button>
+    <button mat-button (click)="playPrev()">
+      <mat-icon>skip_previous</mat-icon>
+    </button>
+    <button mat-button *ngIf="!trackPlaying" (click)="playSong()">
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-button *ngIf="trackPlaying" (click)="pauseSong()">
+      <mat-icon>pause</mat-icon>
+    </button>
+    <button mat-button (click)="playNext()">
+      <mat-icon>skip_next</mat-icon>
+    </button>
+    <button mat-button (click)="stopSong()">
+      <mat-icon>stop</mat-icon>
+    </button>
+    <button mat-button (click)="shuffle()">
+      <mat-icon>shuffle</mat-icon>
+    </button>
   </div>
-  <h1>
-    <strong>Now Playing</strong> : {{trackName}}</h1>
-  <h1>{{tDisplay}} | {{tDuration}}</h1>
+  <div>
+    <strong class="playing">Now Playing</strong> :
+    <marquee class="name">{{trackName}}</marquee>
+  </div>
 </div>

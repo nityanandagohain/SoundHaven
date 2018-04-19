@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class TrackService {
+  public width: any;
 
   public song: Howl;
 
@@ -37,7 +38,7 @@ export class TrackService {
       return -1;
     } else if (this.trackList[this.currentIndex].howl == null) {
       this.song = this.trackList[this.currentIndex].howl = new Howl({
-        src: [this.trackList[this.currentIndex].file]
+        src: [this.trackList[this.currentIndex].file],
       })
     } else {
       this.song = this.trackList[this.currentIndex].howl;
@@ -106,5 +107,11 @@ export class TrackService {
   public getTrackName = () => {
     var sym = (this.trackList[this.currentIndex].file).lastIndexOf('/');
     return (this.trackList[this.currentIndex].file).substring(sym + 1);
+  }
+
+  public getWidth = () => {
+    let x: any = (this.song.seek() as number);
+    x = Math.floor((x/this.song.duration() || 0)*100);
+    return x;
   }
 }
