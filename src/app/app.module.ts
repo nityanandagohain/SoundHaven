@@ -12,7 +12,8 @@ import { MatButtonModule,
       MatInputModule,
       MatProgressBarModule,
       MatGridListModule,
-      MatButtonToggleModule } from '@angular/material';
+      MatButtonToggleModule,
+      MatToolbarModule } from '@angular/material';
 import { MatSliderModule } from '@angular/material/slider'
 
 import { AppComponent } from './app.component';
@@ -46,6 +47,7 @@ import { AnimationComponent } from './sound-haven/animation/animation.component'
     MatGridListModule,
     MatButtonToggleModule,
     MatSliderModule,
+    MatToolbarModule
   ],
   providers: [TrackService],
   bootstrap: [AppComponent]

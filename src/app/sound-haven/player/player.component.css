@@ -5,11 +5,10 @@
 
 .name {
     font-size: 15px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .button-row{
-    margin-left: 20%;
+    margin-left: 22%;
 }
 
 .duration {
@@ -24,6 +23,16 @@
 
 .mat-button-toggle-standalone{
     box-shadow: none;
+}
+
+mat-grid-list {
+    width: 100%;
+    margin-bottom: -10px;
+}
+
+.container {
+    min-height: 200px;
+    background: #80d8ff;
 }
 
 mat-slider {

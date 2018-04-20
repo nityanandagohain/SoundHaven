@@ -2,36 +2,40 @@
   <div>
     <marquee class="name">{{trackName}}</marquee>
   </div>
-  <mat-grid-list cols="6">
-    <mat-grid-tile cols="1" row="1">
+  <mat-grid-list cols="5">
+    <mat-grid-tile colspan="1" rowspan="1">
       <h3 class="duration">{{tDisplay}}</h3>
     </mat-grid-tile>
-    <mat-grid-tile colspan="4" row="1">
-      <mat-progress-bar mode='determinate' [value]="value"></mat-progress-bar>  
+    <mat-grid-tile colspan="3" rowspan="1">
+      <mat-progress-bar mode='determinate' [value]="value"></mat-progress-bar>
     </mat-grid-tile>
-    <mat-grid-tile cols="1" row="1">
+    <mat-grid-tile colspan="1" rowspan="1">
       <h3 class="duration"> {{tDuration}}</h3>
     </mat-grid-tile>
   </mat-grid-list>
-  <div class="button-row">
-    <button mat-button (click)="playPrev()">
-      <mat-icon>skip_previous</mat-icon>
-    </button>
-    <button mat-button *ngIf="!trackPlaying" (click)="playSong()">
-      <mat-icon>play_arrow</mat-icon>
-    </button>
-    <button mat-button *ngIf="trackPlaying" (click)="pauseSong()">
-      <mat-icon>pause</mat-icon>
-    </button>
-    <button mat-button (click)="playNext()">
-      <mat-icon>skip_next</mat-icon>
-    </button>
-    <button mat-button (click)="stopSong()">
-      <mat-icon>stop</mat-icon>
-    </button>
-    <mat-button-toggle mat-button (click)="shuffleclick()"> 
-      <mat-icon>shuffle</mat-icon>
-    </mat-button-toggle>
-    <mat-slider min="0" vertical value="50" thumbLabel tickInterval="1" #matslider (input)="pitch($event)"></mat-slider>
+  <div class="container">
+    <div class="button-row">
+      <br>
+      <br>
+      <button mat-button (click)="stopSong()">
+        <mat-icon>stop</mat-icon>
+      </button>
+      <button mat-button (click)="playPrev()">
+        <mat-icon>skip_previous</mat-icon>
+      </button>
+      <button mat-fab color="primary" *ngIf="!trackPlaying" (click)="playSong()">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+      <button mat-fab color="primary" *ngIf="trackPlaying" (click)="pauseSong()">
+        <mat-icon>pause</mat-icon>
+      </button>
+      <button mat-button (click)="playNext()">
+        <mat-icon>skip_next</mat-icon>
+      </button>
+      <mat-button-toggle mat-button (click)="shuffleclick()">
+        <mat-icon>shuffle</mat-icon>
+      </mat-button-toggle>
+      <mat-slider min="0" vertical value="50" thumbLabel tickInterval="1" #matslider (input)="pitch($event)"></mat-slider>
+    </div>
   </div>
 </div>
