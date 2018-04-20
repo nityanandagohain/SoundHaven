@@ -13,7 +13,7 @@ export class PlayerComponent implements OnInit {
 
   public tDisplay: string = '0:00';
   public tDuration: string = '0:00';
-  public trackName: string;
+  public trackName: string = "No songs to play";
   public trackPlaying: boolean = false;
   public trackListVisible: boolean = false;
   public shuffletoggle: boolean = false;
@@ -53,11 +53,10 @@ export class PlayerComponent implements OnInit {
 
   public playNext() {
     console.log("Next called");
-    if(this.shuffletoggle == true)
-    {
+    if (this.shuffletoggle == true) {
       this.shuffle();
     }
-    else{
+    else {
       let x = this._trackService.next();
       if (x != -1) {
         this.display();
@@ -67,13 +66,13 @@ export class PlayerComponent implements OnInit {
 
   public playPrev() {
     console.log("Prev called");
-    if(this.shuffletoggle == true){
+    if (this.shuffletoggle == true) {
       let x = this._trackService.prevshuffle();
       if (x != -1) {
         this.display();
       }
     }
-    else{
+    else {
       let x = this._trackService.prev();
       if (x != -1) {
         this.display();
@@ -81,7 +80,7 @@ export class PlayerComponent implements OnInit {
     }
   }
 
-  public shuffleclick(){
+  public shuffleclick() {
     console.log("Shuffle is toggled");
     this.shuffletoggle = !this.shuffletoggle;
   }
@@ -105,7 +104,7 @@ export class PlayerComponent implements OnInit {
     }, 1000);
   }
 
-  public showeve = ($event) => {
-    console.log(event);
+  public seekTo = (event) => {
+    this._trackService.seekTo(event.value);
   }
 }

@@ -26,6 +26,9 @@ export class TrackService {
         this.trackList.push({ file: arg[i], howl: null });
       }
       this.trackListChange.next(this.trackList); //For the components to be in sync
+      let notification = new Notification('SoundHaven', {
+        body: 'Songs Added. Play Now'
+      });
       this.appRef.tick();
     });
   }
@@ -123,12 +126,16 @@ export class TrackService {
 
   public getWidth = () => {
     let x: any = (this.song.seek() as number);
-    x = Math.floor((x/this.song.duration() || 0)*100);
+    x = Math.floor((x / this.song.duration() || 0) * 100);
     return x;
   }
 
   public setVolume = (volvalue) => {
-    Howler.volume(volvalue/100);
+    Howler.volume(volvalue / 100);
+  }
+
+  public seekTo = (percentage: number) => {
+    this.song.seek(percentage * this.song.duration() / 100);
   }
 
 }
