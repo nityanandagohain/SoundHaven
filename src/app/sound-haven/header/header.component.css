@@ -4,5 +4,15 @@
 }
 
 mat-toolbar {
-  box-shadow: 3px 8px 16px 0 rgba(0,0,0,0.4);
+  box-shadow: 3px 5px 16px 0 rgba(0,0,0,0.4);
+}
+
+::ng-deep label.mat-input-placeholder {
+  transition-duration: 0.8s;
+  color: #fff;  
+  text-decoration-color: white;
+}
+
+::ng-deep .mat-form-field-underline{
+  background-color: white;
 }
