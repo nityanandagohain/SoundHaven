@@ -21,7 +21,7 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
     }))
 
     // Open the DevTools.
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
 
     //Menu
