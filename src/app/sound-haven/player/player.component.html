@@ -26,9 +26,9 @@
     <button mat-button (click)="stopSong()">
       <mat-icon>stop</mat-icon>
     </button>
-    <button mat-button (click)="shuffle()">
+    <mat-button-toggle mat-button (click)="shuffleclick()"> 
       <mat-icon>shuffle</mat-icon>
-    </button>
+    </mat-button-toggle>
   </div>
   <div>
     <strong class="playing">Now Playing</strong> :

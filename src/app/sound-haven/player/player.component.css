@@ -16,3 +16,12 @@
     font-size: 15px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.mat-button-toggle-checked{
+    color: black;
+    background-color: transparent;
+}
+
+.mat-button-toggle-standalone{
+    box-shadow: none;
+}

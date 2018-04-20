@@ -16,6 +16,7 @@ export class PlayerComponent implements OnInit {
   public trackName: string;
   public trackPlaying: boolean = false;
   public trackListVisible: boolean = false;
+  public shuffletoggle: boolean = false;
   public value: number;
 
   constructor(private _trackService: TrackService) { };
@@ -47,9 +48,15 @@ export class PlayerComponent implements OnInit {
 
   public playNext() {
     console.log("Next called");
-    let x = this._trackService.next();
-    if (x != -1) {
-      this.display();
+    if(this.shuffletoggle == true)
+    {
+      this.shuffle();
+    }
+    else{
+      let x = this._trackService.next();
+      if (x != -1) {
+        this.display();
+      }
     }
   }
 
@@ -59,6 +66,11 @@ export class PlayerComponent implements OnInit {
     if (x != -1) {
       this.display();
     }
+  }
+
+  public shuffleclick(){
+    console.log("Shuffle is toggled");
+    this.shuffletoggle = !this.shuffletoggle;
   }
 
   public shuffle() {
