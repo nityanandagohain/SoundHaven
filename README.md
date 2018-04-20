@@ -1,5 +1,5 @@
 # SoundHaven
-### Build Using Electron and Angular 5
+### Using Electron and Angular 5
 ![player](./RepoAssets/player.gif)
 # Run app
 * Clone the repository.
