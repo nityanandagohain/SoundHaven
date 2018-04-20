@@ -12,6 +12,7 @@ export class TrackService {
   public trackList: any = [];      //file: && howl :
 
   private currentIndex: number = 0;
+  private prevIndex: number;
 
   public trackListChange: Subject<any> = new Subject<any>(); //For the components to be in sync
 
@@ -86,7 +87,17 @@ export class TrackService {
     return x;
   }
 
+  public prevshuffle = () => {
+    if (this.song) {
+      this.song.stop();
+    }
+    this.currentIndex = this.prevIndex;
+    let x = this.play();
+    return x;
+  }
+
   public shuffle = () => {
+    this.prevIndex = this.currentIndex;
     this.currentIndex = Math.floor(Math.random() * this.trackList.length);
   }
 
@@ -106,7 +117,7 @@ export class TrackService {
 
   public getTrackName = () => {
     var sym = (this.trackList[this.currentIndex].file).lastIndexOf('/');
-    return (this.trackList[this.currentIndex].file).substring(sym + 1);
+    return (this.trackList[this.currentIndex].file).slice(sym + 1, -4);
   }
 
   public getWidth = () => {
