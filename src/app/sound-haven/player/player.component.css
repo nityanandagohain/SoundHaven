@@ -1,19 +1,20 @@
-.playing{
+/* .playing{
     font-size: 25px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+} */
 
-.name {
-    font-size: 15px;
+.name{
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Tajawal', sans-serif;
 }
 
 .button-row{
     margin-left: 22%;
 }
 
-.duration {
+.duration{
     font-size: 15px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Tajawal', sans-serif;
 }
 
 .mat-button-toggle-checked{
@@ -24,11 +25,37 @@
 .mat-button-toggle-standalone{
     box-shadow: none;
 }
+
 mat-grid-list {
     width: 100%;
     margin-bottom: -10px;
 }
-.container {
-    min-height: 200px;
-    background: #80d8ff;
+
+.bottom-card {
+    min-height: 210px;
+    background: #e9edee;
+    box-shadow: 3px 0 16px 2px rgba(0,0,0,0.4);  
+}
+
+/* ::ng-deep .mat-progress-bar-buffer{
+    background-color: white;
+} */
+
+mat-slider {
+    width: 35px;
+    margin-left: 15%;
+  } 
+
+::ng-deep .mat-accent .mat-slider-thumb {
+    background-color: #673ab7;
+} 
+::ng-deep .mat-accent .mat-slider-thumb-label {
+    background-color: #673ab7;
+} 
+::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: #673ab7;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb-label-text{
+    color: white;
 }

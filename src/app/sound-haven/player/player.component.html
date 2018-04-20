@@ -1,6 +1,6 @@
 <div>
-  <div>
-    <marquee class="name">{{trackName}}</marquee>
+  <div
+     class="container name">{{trackName}}
   </div>
   <mat-grid-list cols="5">
     <mat-grid-tile colspan="1" rowspan="1">
@@ -13,7 +13,7 @@
       <h3 class="duration"> {{tDuration}}</h3>
     </mat-grid-tile>
   </mat-grid-list>
-  <div class="container">
+  <div class="bottom-card">
     <div class="button-row">
       <br>
       <br>
@@ -35,6 +35,7 @@
       <mat-button-toggle mat-button (click)="shuffleclick()">
         <mat-icon>shuffle</mat-icon>
       </mat-button-toggle>
+      <mat-slider min="0" vertical value="50" thumbLabel tickInterval="1" #matslider (input)="pitch($event)"></mat-slider>
     </div>
   </div>
 </div>

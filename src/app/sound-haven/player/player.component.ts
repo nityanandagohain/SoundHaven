@@ -23,6 +23,11 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit() { };
 
+  pitch(event: any) {
+    console.log(event.value);
+    this._trackService.setVolume(event.value);
+  }
+
   public playSong() {
     console.log('Play called');
     let x = this._trackService.play();
