@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators/map';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  public show: boolean= false;
   private subscription: any;
   public tracks: any = [""];
   stateCtrl: FormControl;
@@ -51,5 +52,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private filterTracks(name: string) {
     return this.tracks.filter(track =>
       track.toLowerCase().indexOf(name.toLowerCase()) === 0);
+  }
+
+  public toggleShowSearch=()=>{
+    this.show = !this.show;
   }
 }

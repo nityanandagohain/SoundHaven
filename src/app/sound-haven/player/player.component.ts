@@ -91,4 +91,8 @@ export class PlayerComponent implements OnInit {
       this.value = this._trackService.getWidth();
     }, 1000);
   }
+
+  public showeve = ($event) => {
+    console.log(event);
+  }
 }
