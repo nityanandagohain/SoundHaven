@@ -25,3 +25,22 @@
 .mat-button-toggle-standalone{
     box-shadow: none;
 }
+
+mat-slider {
+    width: 35px;
+    margin-left: 15%;
+  } 
+
+::ng-deep .mat-accent .mat-slider-thumb {
+    background-color: #0D47A1;
+} 
+::ng-deep .mat-accent .mat-slider-thumb-label {
+    background-color: #0D47A1;
+} 
+::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: #0D47A1;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb-label-text{
+    color: white;
+}
