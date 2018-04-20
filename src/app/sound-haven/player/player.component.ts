@@ -62,9 +62,17 @@ export class PlayerComponent implements OnInit {
 
   public playPrev() {
     console.log("Prev called");
-    let x = this._trackService.prev();
-    if (x != -1) {
-      this.display();
+    if(this.shuffletoggle == true){
+      let x = this._trackService.prevshuffle();
+      if (x != -1) {
+        this.display();
+      }
+    }
+    else{
+      let x = this._trackService.prev();
+      if (x != -1) {
+        this.display();
+      }
     }
   }
 
