@@ -43,12 +43,11 @@ export class TrackService {
     } else if (this.trackList[this.currentIndex].howl == null) {
       this.song = this.trackList[this.currentIndex].howl = new Howl({
         src: [this.trackList[this.currentIndex].file],
-        volume: 0.8
+        volume: 0.7
       })
     } else {
       this.song = this.trackList[this.currentIndex].howl;
     }
-    // this.display();
     this.song.play();
     return 0;
   }
@@ -130,7 +129,7 @@ export class TrackService {
     return x;
   }
 
-  public setVolume = (volvalue) => {
+  public setVolume = (volvalue: number) => {
     Howler.volume(volvalue / 100);
   }
 

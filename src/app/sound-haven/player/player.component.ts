@@ -36,6 +36,7 @@ export class PlayerComponent implements OnInit {
       this.trackPlaying = true;
       this.display();
     }
+    this.checkSongProgress();
   }
 
   public pauseSong() {
@@ -62,6 +63,7 @@ export class PlayerComponent implements OnInit {
         this.display();
       }
     }
+    this.checkSongProgress();
   }
 
   public playPrev() {
@@ -106,5 +108,13 @@ export class PlayerComponent implements OnInit {
 
   public seekTo = (event) => {
     this._trackService.seekTo(event.value);
+  }
+
+  public checkSongProgress(){
+    var m = this;
+    this._trackService.song.on('end', function(){
+      console.log("Finished");
+      m.playNext();
+    });
   }
 }
