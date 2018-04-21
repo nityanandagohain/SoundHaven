@@ -7,7 +7,7 @@
       <h3 class="duration">{{tDisplay}}</h3>
     </mat-grid-tile>
     <mat-grid-tile colspan="3" rowspan="1">
-      <mat-slider style="width: 100%" [value]="value" (input)="seekTo($event)"></mat-slider>
+      <mat-slider id="probar" style="width: 100%" [value]="value" (input)="seekTo($event)"></mat-slider>
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1">
       <h3 class="duration"> {{tDuration}}</h3>
@@ -35,7 +35,7 @@
       <mat-button-toggle mat-button (click)="shuffleclick()">
         <mat-icon>shuffle</mat-icon>
       </mat-button-toggle>
-      <mat-slider class="mat-slider-vol" min="0" vertical value="50" thumbLabel tickInterval="1" #matslider (input)="pitch($event)"></mat-slider>
+      <mat-slider class="mat-slider-vol" min="0" vertical value="70" thumbLabel tickInterval="1" (input)="pitch($event)"></mat-slider>
     </div>
   </div>
 </div>

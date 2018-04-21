@@ -12,6 +12,13 @@
     margin-left: 22%;
 }
 
+::ng-deep #probar .mat-slider-thumb{
+    border-radius: 10%;
+    width: 0;
+    height: auto;
+    border: none;
+}
+
 .duration{
     font-size: 15px;
     font-family: 'Tajawal', sans-serif;
