@@ -23,7 +23,7 @@ export class TrackService {
     ipc.on('mp3-file', (event, arg) => {
       console.log(arg);
       for (let i = 0; i < arg.length; i++) {
-        this.trackList.push({ file: arg[i], howl: null });
+        this.trackList.push({ id: i, file: arg[i], howl: null });
       }
       this.trackListChange.next(this.trackList); //For the components to be in sync
       let notification = new Notification('SoundHaven', {
@@ -135,6 +135,17 @@ export class TrackService {
 
   public seekTo = (percentage: number) => {
     this.song.seek(percentage * this.song.duration() / 100);
+  }
+
+  public changeNextIndex = (selectedId: number) => {
+    //Linear search
+    //assuming that id and index number will be same
+    for (let i = 0; i < this.trackList.length; i++) {
+      if (selectedId == this.trackList[i].id) {
+        this.currentIndex = selectedId - 1;
+        break;
+      }
+    }
   }
 
 }

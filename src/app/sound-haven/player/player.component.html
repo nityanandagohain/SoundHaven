@@ -1,6 +1,5 @@
 <div>
-  <div
-     class="container name">{{trackName}}
+  <div class="container name">{{trackName}}
   </div>
   <mat-grid-list cols="5">
     <mat-grid-tile colspan="1" rowspan="1">
@@ -14,28 +13,27 @@
     </mat-grid-tile>
   </mat-grid-list>
   <div class="bottom-card">
-    <div class="button-row">
-      <br>
-      <br>
-      <button mat-button (click)="stopSong()">
-        <mat-icon>stop</mat-icon>
-      </button>
-      <button mat-button (click)="playPrev()">
-        <mat-icon>skip_previous</mat-icon>
-      </button>
-      <button mat-fab color="primary" *ngIf="!trackPlaying" (click)="playSong()">
-        <mat-icon>play_arrow</mat-icon>
-      </button>
-      <button mat-fab color="primary" *ngIf="trackPlaying" (click)="pauseSong()">
-        <mat-icon>pause</mat-icon>
-      </button>
-      <button mat-button (click)="playNext()">
-        <mat-icon>skip_next</mat-icon>
-      </button>
-      <mat-button-toggle mat-button (click)="shuffleclick()">
-        <mat-icon>shuffle</mat-icon>
-      </mat-button-toggle>
-      <mat-slider class="mat-slider-vol" min="0" vertical value="70" thumbLabel tickInterval="1" (input)="pitch($event)"></mat-slider>
-    </div>
+    <mat-toolbar class="bg-trans">
+      <mat-toolbar-row class="bg-trans main-toolbar">
+        <button mat-icon-button class="icon-btn leftmost" (click)="stopSong()">
+          <mat-icon>stop</mat-icon>
+        </button>
+        <button mat-icon-button class="prev-btn" (click)="playPrev()">
+          <mat-icon>skip_previous</mat-icon>
+        </button>
+        <button mat-fab color="primary" (click)="playPause()">
+          <mat-icon *ngIf="!trackPlaying">play_arrow</mat-icon>
+          <mat-icon *ngIf="trackPlaying">pause</mat-icon>
+        </button>
+        <button mat-icon-button class="icon-btn" (click)="playNext()">
+          <mat-icon>skip_next</mat-icon>
+        </button>
+        <mat-button-toggle class="icon-btn" mat-icon-button (click)="shuffleclick()">
+          <mat-icon>shuffle</mat-icon>
+        </mat-button-toggle>
+        <mat-icon class="vol">volume_up</mat-icon>
+        <mat-slider class="mat-slider-vol" min="0" value="70" thumbLabel tickInterval="1" (input)="pitch($event)"></mat-slider>
+      </mat-toolbar-row>
+    </mat-toolbar>
   </div>
 </div>

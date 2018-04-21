@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TrackService } from '../services/tracks/track-service.service';
+import { PlayerComponent } from '../player/player.component';
 
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
@@ -12,7 +13,8 @@ import { map } from 'rxjs/operators/map';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  public show: boolean= false;
+  @Input() player: PlayerComponent;
+  public show: boolean = false;
   private subscription: any;
   public tracks: any = [""];
   stateCtrl: FormControl;
@@ -34,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         let sym = tempStr.lastIndexOf('/');
         console.log(sym);
         tempStr = tempStr.substring(sym + 1);
-        trackList.push(tempStr);
+        trackList.push({ id: recievedObject[i].id, trackName: tempStr });
       }
       this.tracks = trackList;
       console.log(trackList);
@@ -51,10 +53,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private filterTracks(name: string) {
     return this.tracks.filter(track =>
-      track.toLowerCase().indexOf(name.toLowerCase()) === 0);
+      track.trackName.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
-  public toggleShowSearch=()=>{
+  public toggleShowSearch = () => {
     this.show = !this.show;
+  }
+
+  public songSelected = (event, track) => {
+    console.log(track);
+    this._trackService.changeNextIndex(track.id);
+    this.player.playNext();
   }
 }
