@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-  <app-header></app-header>
+  <app-header [player]="player"></app-header>
   <app-animation #animation></app-animation>
-  <app-player [animation]="animation"></app-player>
+  <app-player #player [animation]="animation"></app-player>
 </div>

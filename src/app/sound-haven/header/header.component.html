@@ -5,11 +5,11 @@
     </button>
     <form class="example-form" *ngIf="show">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Search" aria-label="string" [matAutocomplete]="auto" [formControl]="stateCtrl">
+        <input matInput placeholder="Search" [matAutocomplete]="auto" [formControl]="stateCtrl">
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let state of filteredTracks | async" [value]="state">
+          <mat-option *ngFor="let track of filteredTracks | async" [value]="track.trackName"  (onSelectionChange)="songSelected($event, track)">
             <!-- <img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /> -->
-            <span>{{ state }}</span> |
+            <span>{{ track.trackName }}</span> |
             <!-- <small>Population: {{state.population}}</small> -->
           </mat-option>
         </mat-autocomplete>

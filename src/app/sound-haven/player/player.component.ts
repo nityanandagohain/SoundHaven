@@ -110,11 +110,18 @@ export class PlayerComponent implements OnInit {
     this._trackService.seekTo(event.value);
   }
 
-  public checkSongProgress(){
-    var m = this;
-    this._trackService.song.on('end', function(){
+  public checkSongProgress() {
+    this._trackService.song.on('end', () => {
       console.log("Finished");
-      m.playNext();
+      this.playNext();
     });
+  }
+
+  public playPause = () => {
+    if (this.trackPlaying) {
+      this.pauseSong();
+    } else {
+      this.playSong();
+    }
   }
 }

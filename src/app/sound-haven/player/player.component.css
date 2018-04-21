@@ -47,11 +47,29 @@ mat-grid-list {
 /* ::ng-deep .mat-progress-bar-buffer{
     background-color: white;
 } */
-
+.bg-trans{
+    background: transparent;
+}
+.main-toolbar{
+    margin-top: 60px;
+}
 .mat-slider-vol {
-    width: 35px;
-    margin-left: 15%;
-  } 
+    max-width: 25px;
+} 
+
+.icon-btn{
+    margin-left: 10px;
+}
+.prev-btn{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.leftmost {
+    margin-left: 33%;
+}
+.vol{
+    margin-left: 35px; margin-top: 2px;
+}
 
 ::ng-deep .mat-accent .mat-slider-thumb {
     background-color: #673ab7;
