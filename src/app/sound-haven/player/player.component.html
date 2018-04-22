@@ -15,24 +15,34 @@
   <div class="bottom-card">
     <mat-toolbar class="bg-trans">
       <mat-toolbar-row class="bg-trans main-toolbar">
+
         <button mat-icon-button class="icon-btn leftmost" (click)="stopSong()">
           <mat-icon>stop</mat-icon>
         </button>
+
         <button mat-icon-button class="prev-btn" (click)="playPrev()">
           <mat-icon>skip_previous</mat-icon>
         </button>
-        <button mat-fab color="primary" (click)="playPause()">
+
+        <button id = "cIcon" mat-fab color="primary" (click)="playPause()">
           <mat-icon *ngIf="!trackPlaying">play_arrow</mat-icon>
           <mat-icon *ngIf="trackPlaying">pause</mat-icon>
         </button>
+
         <button mat-icon-button class="icon-btn" (click)="playNext()">
           <mat-icon>skip_next</mat-icon>
         </button>
+
         <mat-button-toggle class="icon-btn" mat-icon-button (click)="shuffleclick()">
           <mat-icon>shuffle</mat-icon>
         </mat-button-toggle>
-        <mat-icon class="vol">volume_up</mat-icon>
+
+        <button class="vol" mat-icon-button (click)="muteVol()">
+          <mat-icon *ngIf="!mute">volume_up</mat-icon>
+          <mat-icon *ngIf="mute">volume_mute</mat-icon>
+        </button>
         <mat-slider class="mat-slider-vol" min="0" value="70" thumbLabel tickInterval="1" (input)="pitch($event)"></mat-slider>
+      
       </mat-toolbar-row>
     </mat-toolbar>
   </div>

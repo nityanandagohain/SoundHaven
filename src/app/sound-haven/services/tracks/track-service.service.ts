@@ -16,6 +16,8 @@ export class TrackService {
 
   public trackListChange: Subject<any> = new Subject<any>(); //For the components to be in sync
 
+  public muted: boolean = false;
+
   constructor(private _electronService: ElectronService, private appRef: ApplicationRef) {
     const ipc = this._electronService.ipcRenderer;
 
@@ -43,7 +45,8 @@ export class TrackService {
     } else if (this.trackList[this.currentIndex].howl == null) {
       this.song = this.trackList[this.currentIndex].howl = new Howl({
         src: [this.trackList[this.currentIndex].file],
-        volume: 0.7
+        volume: 0.7,
+        mute: false
       })
     } else {
       this.song = this.trackList[this.currentIndex].howl;
@@ -102,6 +105,16 @@ export class TrackService {
   public shuffle = () => {
     this.prevIndex = this.currentIndex;
     this.currentIndex = Math.floor(Math.random() * this.trackList.length);
+  }
+
+  public volMute = () => {
+    if(!this.muted){
+      this.song.mute(true);
+  }
+    else{
+      this.song.mute(false);
+    }
+    this.muted = !this.muted;
   }
 
   public formatTime = (secs) => {
