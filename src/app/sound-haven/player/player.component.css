@@ -57,6 +57,10 @@ mat-grid-list {
     max-width: 25px;
 } 
 
+#cIcon:hover{
+    box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.4); 
+}
+
 .icon-btn{
     margin-left: 10px;
 }
@@ -68,7 +72,7 @@ mat-grid-list {
     margin-left: 33%;
 }
 .vol{
-    margin-left: 35px; margin-top: 2px;
+    margin-left: 35px; margin-top: 1px;
 }
 
 ::ng-deep .mat-accent .mat-slider-thumb {

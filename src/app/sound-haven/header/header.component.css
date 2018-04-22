@@ -16,3 +16,7 @@ mat-toolbar {
 ::ng-deep .mat-form-field-underline{
   background-color: white;
 }
+
+::ng-deep #cdk-overlay-0{
+  width: auto !important;
+}

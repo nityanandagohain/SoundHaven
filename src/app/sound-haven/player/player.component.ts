@@ -17,6 +17,7 @@ export class PlayerComponent implements OnInit {
   public trackPlaying: boolean = false;
   public trackListVisible: boolean = false;
   public shuffletoggle: boolean = false;
+  public mute: boolean = false;
   public value: number;
 
   constructor(private _trackService: TrackService) { };
@@ -110,7 +111,7 @@ export class PlayerComponent implements OnInit {
     this._trackService.seekTo(event.value);
   }
 
-  public checkSongProgress() {
+  public checkSongProgress(){
     this._trackService.song.on('end', () => {
       console.log("Finished");
       this.playNext();
@@ -123,5 +124,10 @@ export class PlayerComponent implements OnInit {
     } else {
       this.playSong();
     }
+  }
+
+  public muteVol = () => {
+    this.mute = !this.mute;
+    this._trackService.volMute();
   }
 }
