@@ -108,10 +108,10 @@ export class TrackService {
   }
 
   public volMute = () => {
-    if(!this.muted){
+    if (!this.muted) {
       this.song.mute(true);
-  }
-    else{
+    }
+    else {
       this.song.mute(false);
     }
     this.muted = !this.muted;

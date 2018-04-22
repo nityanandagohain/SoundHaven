@@ -41,7 +41,7 @@
           <mat-icon *ngIf="!mute">volume_up</mat-icon>
           <mat-icon *ngIf="mute">volume_mute</mat-icon>
         </button>
-        <mat-slider class="mat-slider-vol" min="0" value="70" thumbLabel tickInterval="1" (input)="pitch($event)"></mat-slider>
+        <mat-slider [disabled]="mute" class="mat-slider-vol" min="0" value="70" thumbLabel tickInterval="1" (input)="pitch($event)"></mat-slider>
       
       </mat-toolbar-row>
     </mat-toolbar>
