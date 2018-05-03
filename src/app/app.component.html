@@ -1,6 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-  <app-header [player]="player"></app-header>
-  <app-animation #animation></app-animation>
-  <app-player #player [animation]="animation"></app-player>
+
+  <mat-sidenav-container
+    class="example-container" (backdropClick)="close('backdrop')" *ngIf="!shouldRun">
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+    <p><button mat-button (click)="close('toggle button')">Toggle</button></p>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header [player]="player"></app-header>
+    <p><button mat-button (click)="sidenav.open()">Open</button></p>
+    <app-animation #animation></app-animation>
+    <app-player #player [animation]="animation"></app-player>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
 </div>

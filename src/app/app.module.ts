@@ -15,12 +15,14 @@ import { MatButtonModule,
       MatButtonToggleModule,
       MatToolbarModule } from '@angular/material';
 import { MatSliderModule } from '@angular/material/slider'
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './sound-haven/player/player.component';
 import { TrackService } from './sound-haven/services/tracks/track-service.service';
 import { HeaderComponent } from './sound-haven/header/header.component';
 import { AnimationComponent } from './sound-haven/animation/animation.component';
+
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { AnimationComponent } from './sound-haven/animation/animation.component'
     MatGridListModule,
     MatButtonToggleModule,
     MatSliderModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [TrackService],
   bootstrap: [AppComponent]
