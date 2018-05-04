@@ -22,6 +22,7 @@ import { PlayerComponent } from './sound-haven/player/player.component';
 import { TrackService } from './sound-haven/services/tracks/track-service.service';
 import { HeaderComponent } from './sound-haven/header/header.component';
 import { AnimationComponent } from './sound-haven/animation/animation.component';
+import { SidebarComponent } from './sound-haven/sidebar/sidebar.component';
 
 
 
@@ -30,7 +31,8 @@ import { AnimationComponent } from './sound-haven/animation/animation.component'
     AppComponent,
     PlayerComponent,
     HeaderComponent,
-    AnimationComponent
+    AnimationComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

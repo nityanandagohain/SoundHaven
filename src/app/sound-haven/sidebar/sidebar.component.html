@@ -1,0 +1,21 @@
+<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')" *ngIf="!shouldRun">
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+    <p>
+        <app-header [player]="player"></app-header>
+      <button mat-button (click)="close('toggle button')">Toggle</button>
+    </p>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    
+    <div class="bar">
+      <!-- <button mat-button (click)="open()">Open</button> -->
+      <button mat-icon-button class="icon-btn" (click)="sidenav.open()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      <!-- <i class="material-icons">menu</i> -->
+      </div>
+    <app-animation #animation></app-animation>
+    <app-player #player [animation]="animation"></app-player>
+  </mat-sidenav-content>
+</mat-sidenav-container>

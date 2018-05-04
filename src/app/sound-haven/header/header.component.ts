@@ -14,6 +14,7 @@ import { map } from 'rxjs/operators/map';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Input() player: PlayerComponent;
+
   public show: boolean = false;
   private subscription: any;
   public tracks: any = [""];
@@ -65,4 +66,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this._trackService.changeNextIndex(track.id);
     this.player.playNext();
   }
+
 }
+
