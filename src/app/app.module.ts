@@ -16,6 +16,7 @@ import { MatButtonModule,
       MatToolbarModule } from '@angular/material';
 import { MatSliderModule } from '@angular/material/slider'
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { SideNavService } from './sound-haven/services/side-nav/side-nav.service';
 
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './sound-haven/player/player.component';
@@ -52,7 +53,9 @@ import { AnimationComponent } from './sound-haven/animation/animation.component'
     MatToolbarModule,
     MatSidenavModule
   ],
-  providers: [TrackService],
+  providers: [TrackService,
+    SideNavService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

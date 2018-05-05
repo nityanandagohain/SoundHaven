@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
+    <button mat-icon-button (click)="toggleSideNav()">
+      <mat-icon>reorder</mat-icon>
+    </button>
     <button mat-icon-button (click)="toggleShowSearch()">
       <mat-icon>search</mat-icon>
     </button>
@@ -7,7 +10,7 @@
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Search" [matAutocomplete]="auto" [formControl]="stateCtrl">
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let track of filteredTracks | async" [value]="track.trackName"  (onSelectionChange)="songSelected($event, track)">
+          <mat-option *ngFor="let track of filteredTracks | async" [value]="track.trackName" (onSelectionChange)="songSelected($event, track)">
             <!-- <img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /> -->
             <span>{{ track.trackName }}</span> |
             <!-- <small>Population: {{state.population}}</small> -->

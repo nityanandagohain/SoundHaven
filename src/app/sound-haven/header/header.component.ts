@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TrackService } from '../services/tracks/track-service.service';
 import { PlayerComponent } from '../player/player.component';
+import { SideNavService } from '../services/side-nav/side-nav.service';
 
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public tracks: any = [""];
   stateCtrl: FormControl;
   filteredTracks: Observable<any[]>;
-  constructor(private _trackService: TrackService) {
+  constructor(private _trackService: TrackService, private _sideNav: SideNavService) {
     this.stateCtrl = new FormControl();
     this.filteredTracks = this.stateCtrl.valueChanges
       .pipe(
@@ -64,5 +65,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     console.log(track);
     this._trackService.changeNextIndex(track.id);
     this.player.playNext();
+  }
+  public toggleSideNav = () => {
+    this._sideNav.toggle();
   }
 }
