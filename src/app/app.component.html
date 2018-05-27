@@ -6,6 +6,9 @@
       <p>
         <button mat-button (click)="close('toggle button')">Toggle</button>
       </p>
+      <ul>
+        <li *ngFor="let track of tracks">{{track.trackName}}</li>
+      </ul>
     </mat-sidenav>
 
     <mat-sidenav-content>
