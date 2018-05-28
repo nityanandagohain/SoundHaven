@@ -1,15 +1,30 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-
+<div class="sidenav">
   <mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')" *ngIf="!shouldRun">
     <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
-      <p>
-        <button mat-button (click)="close('toggle button')">Toggle</button>
-      </p>
-      <ul>
-        <li *ngFor="let track of tracks">{{track.trackName}}</li>
-      </ul>
+      <div style="margin-left: 10px">
+        <p>
+          <button mat-fab (click)="close('toggle button')">
+            <i class="material-icons">
+              close
+            </i>
+          </button>
+        </p>
+
+        <!-- Song List -->
+        <div class="scrollable">
+          <ul>
+            <li *ngFor="let track of tracks">
+              <button mat-fab>
+                <i class="material-icons">favorite_border</i>
+              </button>
+              {{track.trackName}}
+            </li>
+          </ul>
+        </div>
+      </div>
     </mat-sidenav>
+
 
     <mat-sidenav-content>
       <app-header [player]="player"></app-header>
@@ -17,5 +32,4 @@
       <app-player #player [animation]="animation"></app-player>
     </mat-sidenav-content>
   </mat-sidenav-container>
-
 </div>
