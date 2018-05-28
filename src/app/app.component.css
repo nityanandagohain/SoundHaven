@@ -1,13 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
 mat-sidenav {
-    width: 250px;
-  }
+  width: 500px;
+  background-color: #00D0C1;
+}
+.sidenav {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+}
+.scrollable {
+  min-height: 480px;
+}
+.material-icon{
+  margin: 5px;
+}
+
+.scrollable ul{
+  margin: 0;
+  padding: 0;
+}
+.scrollable ul li {
+  list-style-type: none;
+  border: 2px solid white;
+  margin: 2px;
+  padding: 2px;
+}
 
 .example-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
   
   
