@@ -53,8 +53,10 @@ import { AnimationComponent } from './sound-haven/animation/animation.component'
     MatToolbarModule,
     MatSidenavModule
   ],
-  providers: [TrackService,
-    SideNavService
+  providers: [
+    TrackService,
+    SideNavService,
+    PlayerComponent
   ],
   bootstrap: [AppComponent]
 })

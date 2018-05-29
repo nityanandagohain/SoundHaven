@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit {
   public tracks: any = [""];
   stateCtrl: FormControl;
   filteredTracks: Observable<any[]>;
-  constructor(private _sideNavService: SideNavService, private _trackService: TrackService) {
+  constructor(private _sideNavService: SideNavService, private _trackService: TrackService, private _player: PlayerComponent) {
     this.stateCtrl = new FormControl();
     this.filteredTracks = this.stateCtrl.valueChanges.pipe(
       startWith(''),
@@ -51,6 +51,12 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this._sideNavService.setSideNav(this.sidenav);
+  }
+
+  playCurrent(id: number){
+    console.log(id);
+    this._trackService.changeNextIndex(id);
+    this._player.playNext();
   }
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));

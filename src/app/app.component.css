@@ -21,9 +21,12 @@ mat-sidenav {
 }
 .scrollable ul li {
   list-style-type: none;
-  border: 2px solid white;
   margin: 2px;
   padding: 2px;
+}
+.trackName {
+  border: 2px solid white;
+  width: auto;
 }
 
 .example-container {
