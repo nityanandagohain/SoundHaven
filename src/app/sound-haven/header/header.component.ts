@@ -49,12 +49,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-
-  // public songSelected = (event, track) => {
-  //   console.log(track);
-  //   this._trackService.changeNextIndex(track.id);
-  //   this.player.playNext();
-  // }
   public toggleSideNav = () => {
     this._sideNav.toggle();
   }

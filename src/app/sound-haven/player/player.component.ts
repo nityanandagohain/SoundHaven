@@ -55,6 +55,12 @@ export class PlayerComponent implements OnInit {
 
   public playNext() {
     console.log("Next called");
+    let x = this._trackService.play();
+    if (x != -1) {
+      this.animation.toggle();
+      this.trackPlaying = true;
+      this.display();
+    }
     if (this.shuffletoggle == true) {
       this.shuffle();
     }

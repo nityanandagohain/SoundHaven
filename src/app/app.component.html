@@ -14,11 +14,19 @@
         <!-- Song List -->
         <div class="scrollable">
           <ul>
-            <li *ngFor="let track of tracks">
-              <button mat-fab>
-                <i class="material-icons">favorite_border</i>
-              </button>
-              {{track.trackName}}
+            <li *ngFor="let track of tracks;" (click)="playCurrent(track.id)">
+              <mat-grid-list cols="6" rowHeight="70px" style="border: 2px solid white;">
+                  <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-fab color="warn">
+                      <i class="material-icons">favorite_border</i>
+                    </button>
+                  </mat-grid-tile>
+                  <mat-grid-tile [colspan]="5" [rowspan]="1">
+                    <div class="trackName">
+                      {{track.trackName}}
+                    </div>
+                  </mat-grid-tile>
+              </mat-grid-list>
             </li>
           </ul>
         </div>
