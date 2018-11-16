@@ -1,6 +1,8 @@
 # SoundHaven
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/sound-haven/Lobby#)
 ### Using Electron and Angular 6
 ![LOGO](./RepoAssets/Logo/mainLogo.png)
+
 
 Thanks to [@nunojesus](https://github.com/nunojesus) for this awesome Logo.
 
@@ -21,3 +23,5 @@ Thanks to [@nunojesus](https://github.com/nunojesus) for this awesome Logo.
 
 # Contribution
 Contributors and more than welcome to contribute and suggest new ideas via issues. 
+
+Gitter Channel : https://gitter.im/sound-haven/Lobby#
