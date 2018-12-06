@@ -16,10 +16,11 @@ export class AppComponent implements AfterViewInit {
   @Input() player: PlayerComponent;
   reason = '';
   private subscription: any;
-  public tracks: any = [""];
+  public tracks: any = [];
   stateCtrl: FormControl;
   filteredTracks: Observable<any[]>;
   constructor(private _sideNavService: SideNavService, private _trackService: TrackService, private _player: PlayerComponent) {
+    console.log(this.tracks.length);
     this.stateCtrl = new FormControl();
     this.filteredTracks = this.stateCtrl.valueChanges.pipe(
       startWith(''),
