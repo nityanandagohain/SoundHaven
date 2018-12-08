@@ -13,9 +13,10 @@
 
         <!-- Song List -->
         <div class="scrollable">
-          <ul>
+          <ul *ngIf="tracks.length > 0" >
             <li *ngFor="let track of tracks;" (click)="playCurrent(track.id)">
-              <mat-grid-list cols="6" rowHeight="70px" style="border: 2px solid white;">
+              <mat-grid-list cols="6" rowHeight="70px"> 
+                <!-- style="border: 2px solid white;"> -->
                   <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <button mat-fab color="warn">
                       <i class="material-icons">favorite_border</i>
@@ -29,6 +30,7 @@
               </mat-grid-list>
             </li>
           </ul>
+          <p *ngIf="tracks.length <= 0">No songs added yet!</p>
         </div>
       </div>
     </mat-sidenav>
