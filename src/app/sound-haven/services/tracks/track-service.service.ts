@@ -8,12 +8,12 @@ export class TrackService {
   public width: any;
 
   public song: Howl;
-
+  public i= 0;
   public trackList: any = [];      //file: && howl :
 
-  private currentIndex: number = 0;
+  public currentIndex: number = 0;
   private prevIndex: number;
-
+                     
   public trackListChange: Subject<any> = new Subject<any>(); //For the components to be in sync
 
   public muted: boolean = false;
@@ -23,10 +23,14 @@ export class TrackService {
 
     //recieve contents from win.webcontents() via ipcRenderer
     ipc.on('mp3-file', (event, arg) => {
-      console.log(arg);
-      for (let i = 0; i < arg.length; i++) {
-        this.trackList.push({ id: i, file: arg[i], howl: null });
-      }
+      console.log('arg',arg);
+
+      
+      //for (let i = 0; i < arg.length; i++) {
+        this.trackList.push({ id: this.i, file: arg[0], howl: null });
+        this.i++;
+        console.log('present',this.trackList);
+      //}
       this.trackListChange.next(this.trackList); //For the components to be in sync
       let notification = new Notification('SoundHaven', {
         body: 'Songs Added. Play Now'
@@ -36,13 +40,15 @@ export class TrackService {
   }
 
   public play = () => {
+    console.log("check",this.trackList);
+    console.log("check2",this.currentIndex);
     if (!this.trackList.length) {
       console.log("No songs to play");
       let notification = new Notification('SoundHaven', {
         body: 'No songs to play'
       });
       return -1;
-    } else if (this.trackList[this.currentIndex].howl == null) {
+    } else if (!this.trackList[this.currentIndex].howl) {
       this.song = this.trackList[this.currentIndex].howl = new Howl({
         src: [this.trackList[this.currentIndex].file],
         volume: 0.7,
@@ -50,6 +56,7 @@ export class TrackService {
       })
     } else {
       this.song = this.trackList[this.currentIndex].howl;
+      console.log('from sidebar',this.song);
     }
     this.song.play();
     return 0;
@@ -155,7 +162,7 @@ export class TrackService {
     //assuming that id and index number will be same
     for (let i = 0; i < this.trackList.length; i++) {
       if (selectedId == this.trackList[i].id) {
-        this.currentIndex = selectedId - 1;
+        this.currentIndex = selectedId;
         break;
       }
     }

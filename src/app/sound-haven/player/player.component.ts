@@ -19,10 +19,22 @@ export class PlayerComponent implements OnInit {
   public shuffletoggle: boolean = false;
   public mute: boolean = false;
   public value: number;
+  private subscription: any;
+  public tracks: any = [];
 
   constructor(private _trackService: TrackService) { };
 
-  ngOnInit() { };
+  ngOnInit() { 
+    this.subscription = this._trackService.trackListChange.subscribe((value) => {
+      this._trackService.currentIndex = value[value.length-1].id;
+      console.log('value',value);
+      this.stopSong();
+      this.playSong();
+    });
+  }
+
+  
+
 
   pitch(event: any) {
     console.log(event.value);
@@ -32,16 +44,23 @@ export class PlayerComponent implements OnInit {
   public playSong() {
     console.log('Play called');
     let x = this._trackService.play();
+    console.log('x',x);
     if (x != -1) {
+      console.log('animation',this.animation);
+
+      if(this.animation)
       this.animation.toggle();
       this.trackPlaying = true;
+      console.log('trackPlaying',this.trackPlaying);
       this.display();
     }
+    console.log("playsong")
     this.checkSongProgress();
   }
 
   public pauseSong() {
     console.log('Pause called');
+    if(this.animation)
     this.animation.toggle();
     this._trackService.pause();
     this.trackPlaying = false;
@@ -57,6 +76,7 @@ export class PlayerComponent implements OnInit {
     console.log("Next called");
     let x = this._trackService.play();
     if (x != -1) {
+      if(this.animation)
       this.animation.toggle();
       this.trackPlaying = true;
       this.display();
