@@ -70,6 +70,7 @@ export class AppComponent implements AfterViewInit,OnInit {
     this._player.stopSong()
     this._trackService.changeNextIndex(id);
     this._player.playPause();
+    this.close(this.reason);
   }
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));

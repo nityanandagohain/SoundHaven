@@ -129,6 +129,7 @@ export class PlayerComponent implements OnInit {
     setInterval(() => {
       this.tDisplay = this._trackService.returnCurrentDuration();
       this.tDuration = this._trackService.returnTotalDuration();
+      console.log(this.tDisplay);
       this.value = this._trackService.getWidth();
     }, 1000);
   }
