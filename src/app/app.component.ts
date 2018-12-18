@@ -23,6 +23,7 @@ export class AppComponent implements AfterViewInit,OnInit {
   stateCtrl: FormControl;
   filteredTracks: Observable<any[]>;
   constructor(private _sideNavService: SideNavService, private _trackService: TrackService, private _player: PlayerComponent) {
+
   }
 
   ngOnInit()
