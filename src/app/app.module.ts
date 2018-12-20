@@ -58,6 +58,6 @@ import { AnimationComponent } from './sound-haven/animation/animation.component'
     SideNavService,
     PlayerComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,PlayerComponent]
 })
 export class AppModule { }

@@ -25,6 +25,7 @@ mat-sidenav {
   list-style-type: none;
   margin: 2px;
   padding: 2px;
+  cursor: pointer;
 }
 .trackName {
   /* border: 2px solid white; */
