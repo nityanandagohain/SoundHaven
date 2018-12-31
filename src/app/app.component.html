@@ -14,7 +14,7 @@
         <!-- Song List -->
         <div class="scrollable">
           <ul *ngIf="tracks.length > 0" >
-            <li *ngFor="let track of tracks;" (click)="playCurrent(track.id)">
+            <li class="tracks" *ngFor="let track of tracks;" (click)="playCurrent(track.id)">
               <mat-grid-list cols="6" rowHeight="70px"> 
                 <!-- style="border: 2px solid white;"> -->
                   <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -30,7 +30,7 @@
               </mat-grid-list>
             </li>
           </ul>
-          <p *ngIf="tracks.length <= 0">No songs added yet!</p>
+          <p *ngIf="tracks.length <= 0" class="noSongs">No songs added yet!</p>
         </div>
       </div>
     </mat-sidenav>

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url('https://fonts.googleapis.com/css?family=Tajawal');
+@import url('https://fonts.googleapis.com/css?family=Caveat|Happy+Monkey|Satisfy');
 /* For the "inset" look only */
 html {
     overflow: auto;
@@ -8,6 +9,7 @@ html {
 body {
     overflow-y: scroll;
     overflow-x: hidden;
+
 }
 
 /* Let's get this party started */
@@ -27,7 +29,7 @@ body {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: rgba(97, 93, 93, 0.8); 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(48, 42, 42, 0.5); 
 }
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(228, 218, 218, 0.4); 
