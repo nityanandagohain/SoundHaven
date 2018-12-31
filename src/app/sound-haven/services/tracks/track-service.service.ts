@@ -25,7 +25,7 @@ export class TrackService {
     ipc.on('mp3-file', (event, arg) => {
       console.log('arg',arg);
 
-      
+      //this.trackList = JSON.parse(localStorage.getItem('tracklist'));
       //for (let i = 0; i < arg.length; i++) {
         this.trackList.push({ id: this.i, file: arg[0], howl: null });
         this.i++;

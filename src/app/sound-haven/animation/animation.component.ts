@@ -23,4 +23,9 @@ export class AnimationComponent implements OnInit {
       this.disp2 = "loader2";
     }
   }
+
+  public animationOn = () =>{
+    this.disp1 = "loader1";
+      this.disp2 = "loader2";
+  }
 }

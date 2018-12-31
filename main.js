@@ -116,6 +116,7 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
       properties: ['openFile']
     }, function(filePath){
       if(filePath){
+        
           let arr = [];
           //console.log(filePath);
           arr.push(filePath[0]);

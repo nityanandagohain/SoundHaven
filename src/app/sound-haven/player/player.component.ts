@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { TrackService } from '../services/tracks/track-service.service';
 import { AnimationComponent } from '../animation/animation.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-player',
@@ -11,25 +12,29 @@ export class PlayerComponent implements OnInit {
 
   @Input() animation: AnimationComponent;
 
-  public tDisplay: string = '0:00';
-  public tDuration: string = '0:00';
+  public tDisplay: string;
+  public tDuration: string
   public trackName: string = "No songs to play";
   public trackPlaying: boolean = false;
   public trackListVisible: boolean = false;
   public shuffletoggle: boolean = false;
   public mute: boolean = false;
   public value: number;
-  private subscription: any;
+  private subscription: Subscription;
   public tracks: any = [];
 
   constructor(private _trackService: TrackService) { };
 
   ngOnInit() { 
+    this.tDisplay = '0:00';
+    this.tDuration = '0:00';
     this.subscription = this._trackService.trackListChange.subscribe((value) => {
       this._trackService.currentIndex = value[value.length-1].id;
       console.log('value',value);
       this.stopSong();
       this.playSong();
+      if(this.animation)
+      this.animation.animationOn(); //for continous animation
     });
   }
 
@@ -46,13 +51,15 @@ export class PlayerComponent implements OnInit {
     let x = this._trackService.play();
     console.log('x',x);
     if (x != -1) {
-      console.log('animation',this.animation);
 
       if(this.animation)
+      {
+      console.log('animation',this.animation);
       this.animation.toggle();
+      }
       this.trackPlaying = true;
       console.log('trackPlaying',this.trackPlaying);
-      this.display();
+      console.log(' playsong display')
     }
     console.log("playsong")
     this.checkSongProgress();
@@ -79,6 +86,7 @@ export class PlayerComponent implements OnInit {
       if(this.animation)
       this.animation.toggle();
       this.trackPlaying = true;
+      console.log('if playnext display')
       this.display();
     }
     if (this.shuffletoggle == true) {
@@ -87,6 +95,7 @@ export class PlayerComponent implements OnInit {
     else {
       let x = this._trackService.next();
       if (x != -1) {
+        console.log('else playnext display')
         this.display();
       }
     }
@@ -98,12 +107,14 @@ export class PlayerComponent implements OnInit {
     if (this.shuffletoggle == true) {
       let x = this._trackService.prevshuffle();
       if (x != -1) {
+        console.log('if playprev display')
         this.display();
       }
     }
     else {
       let x = this._trackService.prev();
       if (x != -1) {
+        console.log('else playprev display')
         this.display();
       }
     }
@@ -120,7 +131,6 @@ export class PlayerComponent implements OnInit {
     this.trackPlaying = true;
     this._trackService.shuffle();
     this._trackService.play();
-    this.display();
   }
 
   public display() {
@@ -139,10 +149,13 @@ export class PlayerComponent implements OnInit {
   }
 
   public checkSongProgress(){
+    if(this._trackService.song)
+    {
     this._trackService.song.on('end', () => {
       console.log("Finished");
       this.playNext();
     });
+  }
   }
 
   public playPause = () => {
