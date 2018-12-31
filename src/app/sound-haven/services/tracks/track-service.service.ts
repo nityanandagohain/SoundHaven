@@ -16,6 +16,7 @@ export class TrackService {
                      
   public trackListChange: Subject<any> = new Subject<any>(); //For the components to be in sync
 
+
   public muted: boolean = false;
 
   constructor(private _electronService: ElectronService, private appRef: ApplicationRef) {
@@ -163,6 +164,7 @@ export class TrackService {
     for (let i = 0; i < this.trackList.length; i++) {
       if (selectedId == this.trackList[i].id) {
         this.currentIndex = selectedId;
+        console.log("the song has been changed");
         break;
       }
     }

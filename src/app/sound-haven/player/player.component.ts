@@ -55,11 +55,12 @@ export class PlayerComponent implements OnInit {
       if(this.animation)
       {
       console.log('animation',this.animation);
-      this.animation.toggle();
+      this.animation.animationOn();
       }
       this.trackPlaying = true;
       console.log('trackPlaying',this.trackPlaying);
       console.log(' playsong display')
+      this.display();
     }
     console.log("playsong")
     this.checkSongProgress();
@@ -68,9 +69,10 @@ export class PlayerComponent implements OnInit {
   public pauseSong() {
     console.log('Pause called');
     if(this.animation)
-    this.animation.toggle();
+    this.animation.animationOff();
     this._trackService.pause();
     this.trackPlaying = false;
+
   }
 
   public stopSong() {
@@ -87,7 +89,7 @@ export class PlayerComponent implements OnInit {
       this.animation.toggle();
       this.trackPlaying = true;
       console.log('if playnext display')
-      this.display();
+      //this.display();
     }
     if (this.shuffletoggle == true) {
       this.shuffle();
@@ -96,7 +98,7 @@ export class PlayerComponent implements OnInit {
       let x = this._trackService.next();
       if (x != -1) {
         console.log('else playnext display')
-        this.display();
+       // this.display();
       }
     }
     this.checkSongProgress();
@@ -108,14 +110,14 @@ export class PlayerComponent implements OnInit {
       let x = this._trackService.prevshuffle();
       if (x != -1) {
         console.log('if playprev display')
-        this.display();
+      //  this.display();
       }
     }
     else {
       let x = this._trackService.prev();
       if (x != -1) {
         console.log('else playprev display')
-        this.display();
+      //  this.display();
       }
     }
   }
