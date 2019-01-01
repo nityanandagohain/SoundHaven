@@ -4,7 +4,7 @@
     <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
       <div style="margin-left: 10px">
         <p>
-          <button mat-fab (click)="close('toggle button')">
+          <button mat-fab (click)="close('toggle button')" class="matClose">
             <i class="material-icons">
               close
             </i>
@@ -14,18 +14,35 @@
         <!-- Song List -->
         <div class="scrollable">
           <ul *ngIf="tracks.length > 0" >
-            <li class="tracks" *ngFor="let track of tracks;" (click)="playCurrent(track.id)">
+            <li class="tracks" *ngFor="let track of tracks;let i = index">
               <mat-grid-list cols="6" rowHeight="70px"> 
                 <!-- style="border: 2px solid white;"> -->
-                  <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <button mat-fab color="warn">
-                      <i class="material-icons">favorite_border</i>
-                    </button>
+                  <mat-grid-tile [colspan]="1" [rowspan]="1" id="songNumber">
+                    <span>{{ i+1 }}.</span>&nbsp;
                   </mat-grid-tile>
-                  <mat-grid-tile [colspan]="5" [rowspan]="1">
+                  <mat-grid-tile [colspan]="4" id="songTitle" [rowspan]="1" (click)="playCurrent(track.id)" matTooltip="Info about the action"
+                  aria-label="Button that displays a tooltip when focused or hovered over">
                     <div class="trackName">
-                      {{track.trackName}}
-</div>
+                      {{ track.trackName.substr(0,26) }}</div>
+                  </mat-grid-tile>
+                  <mat-grid-tile class="options" [colspan]="1" [rowspan]="1">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item class="selectBtn">
+                        <button mat-fab color="warn">
+                          <i class="material-icons" style="margin: 7%;">favorite_border</i>&nbsp;
+                        </button>
+                        <span class="select">Favourites</span>
+                      </button>
+                      <button mat-menu-item class="selectBtn">
+                        <button mat-fab color="basic">
+                          <i class="material-icons" style="margin: 7%;">delete</i>&nbsp;
+                        </button>
+                        <span class="select">Delete</span>
+                      </button>
+                    </mat-menu>
                   </mat-grid-tile>
               </mat-grid-list>
             </li>

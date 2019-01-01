@@ -14,25 +14,52 @@ mat-sidenav {
   min-height: 480px;
   color:white !important;
 }
+
+
+
 .material-icon{
   margin: 5px;
 }
-
+.matClose{
+  position: relative;
+  left: 82%;
+}
 .scrollable ul{
   margin: 0;
   padding: 0;
 }
 .scrollable ul li {
   list-style-type: none;
-  margin: 2px;
-  padding: 2px;
-  cursor: pointer;
+  margin-left: -72px;
+  width: 453px;
+  height: 90px;  cursor: pointer;
 }
 .trackName {
   /* border: 2px solid white; */
   width: auto;
+  left: 78px;
 }
+span{
+  font-family: 'Happy Monkey', cursive;
 
+}
+#songTitle{
+  float: left !important;
+}
+#songNumber{
+  left:36px !important;
+}
+.selectBtn .select{
+  color:black;
+  font-size: 17px;
+  padding-left: 23px;
+}
+.selectBtn{
+  width: 100%;
+  height: 78px;
+  padding-top: 7px;
+  margin-bottom: -6px;
+}
 .example-container {
   position: absolute;
   top: 0;

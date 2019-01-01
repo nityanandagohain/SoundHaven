@@ -2,11 +2,12 @@ import { Injectable, ApplicationRef } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { Howl } from 'howler';
 import { Subject } from 'rxjs';
-
+//const notifier = require('node-notifier');
+// String
 @Injectable()
 export class TrackService {
   public width: any;
-
+  public sameTrack : boolean;
   public song: Howl;
   public i= 0;
   public trackList: any = [];      //file: && howl :
@@ -163,8 +164,19 @@ export class TrackService {
     //assuming that id and index number will be same
     for (let i = 0; i < this.trackList.length; i++) {
       if (selectedId == this.trackList[i].id) {
+        if(this.currentIndex == selectedId)
+        {
+          let notification = new Notification('SoundHaven', {
+            body: 'Song is already playing'
+          });
+          this.sameTrack = true;
+          return;
+        }
+        else{
         this.currentIndex = selectedId;
+        this.sameTrack = false;
         console.log("the song has been changed");
+        }
         break;
       }
     }

@@ -102,10 +102,13 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   playCurrent(id: number) {
     console.log(id);
-    this._player.stopSong()
     this._trackService.changeNextIndex(id);
+    if(!this._trackService.sameTrack)
+    {
+    this._player.stopSong();
     this._player.playPause();
     this.close(this.reason);
+    }
   }
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
