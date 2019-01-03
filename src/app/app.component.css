@@ -5,6 +5,7 @@ mat-sidenav {
   background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    }
+
 .sidenav {
   margin: 0;
   padding: 0;
@@ -32,7 +33,8 @@ mat-sidenav {
   list-style-type: none;
   margin-left: -72px;
   width: 453px;
-  height: 90px;  cursor: pointer;
+  height: 90px;  
+  cursor: pointer;
 }
 .trackName {
   /* border: 2px solid white; */

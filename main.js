@@ -100,8 +100,6 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
                 }
             }
 
-            //console.log("folder");
-            console.log('arr',arr);
             win.webContents.send('mp3-file', arr); //sending the opened file to renderer process through ipc renderer via 'mp3-file' event
           });
         }
@@ -122,7 +120,7 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
           //console.log(filePath);
           arr.push(filePath[0]);
           //console.log(win.webContents);
-          console.log('arr',arr);
+
           win.webContents.send('mp3-file', arr);  //sending the opened file to renderer process through ipc renderer via 'mp3-file' event
       }
     });
