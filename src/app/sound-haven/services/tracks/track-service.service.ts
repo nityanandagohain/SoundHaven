@@ -2,8 +2,9 @@ import { Injectable, ApplicationRef } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { Howl } from 'howler';
 import { Subject } from 'rxjs';
-//const notifier = require('node-notifier');
-// String
+// import * as storage from 'electron-json-storage';
+import { store } from '@angular/core/src/render3/instructions';
+
 @Injectable()
 export class TrackService {
   public width: any;
@@ -11,7 +12,7 @@ export class TrackService {
   public song: Howl;
   public i= 0;
   public trackList: any = [];      //file: && howl :
-
+public currentTrackName : string;
   public currentIndex: number = 0;
   private prevIndex: number;
                      
@@ -26,12 +27,14 @@ export class TrackService {
     //recieve contents from win.webcontents() via ipcRenderer
     ipc.on('mp3-file', (event, arg) => {
       console.log('arg',arg);
-
-      //this.trackList = JSON.parse(localStorage.getItem('tracklist'));
+        
+      //if(storage.get('tracklist'))
+     // this.trackList = storage.get('tracklist');
       //for (let i = 0; i < arg.length; i++) {
         this.trackList.push({ id: this.i, file: arg[0], howl: null });
         this.i++;
         console.log('present',this.trackList);
+       // storage.set('tracklist',(this.trackList));
       //}
       this.trackListChange.next(this.trackList); //For the components to be in sync
       let notification = new Notification('SoundHaven', {
@@ -50,7 +53,8 @@ export class TrackService {
         body: 'No songs to play'
       });
       return -1;
-    } else if (!this.trackList[this.currentIndex].howl) {
+    } else if (!this.trackList[this.currentIndex].howl && this.trackList.indexOf(this.trackList[this.currentIndex])>-1) {
+      console.log('while howl',this.currentIndex);
       this.song = this.trackList[this.currentIndex].howl = new Howl({
         src: [this.trackList[this.currentIndex].file],
         volume: 0.7,
@@ -141,8 +145,14 @@ export class TrackService {
   }
 
   public getTrackName = () => {
+    if(this.trackList[this.currentIndex]){
     var sym = (this.trackList[this.currentIndex].file).lastIndexOf('/');
-    return (this.trackList[this.currentIndex].file).slice(sym + 1, -4);
+    this.currentTrackName = (this.trackList[this.currentIndex].file).slice(sym + 1, -4);
+    }
+    else
+    this.currentTrackName = 'No tracks to play';
+    console.log('gettracjbane',this.currentTrackName);
+    return this.currentTrackName;
   }
 
   public getWidth = () => {

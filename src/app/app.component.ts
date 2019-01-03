@@ -111,5 +111,34 @@ export class AppComponent implements AfterViewInit, OnInit {
     }
   }
 
+  deleteSong(i)
+  {
+
+    if(this._trackService.currentIndex == i)
+    {
+        let notification = new Notification('SoundHaven', {
+          body: 'Song is playing right now so cannot delete'
+        });
+    }
+    else{
+      console.log('this number song deleted',i);
+     this.close(this.reason);
+     this.tracks.splice(i,1);
+     this._trackService.trackList.splice(i,1);
+     this.tracks.map(elem=>{
+       console.log('elem',elem);
+       console.log('index of elem',this.tracks.indexOf(elem));
+       elem.id = this.tracks.indexOf(elem);
+     })
+     this._trackService.trackList.map(elem=>{
+      elem.id = this._trackService.trackList.indexOf(elem);
+    })
+    this._trackService.i--;
+     console.log('delete consoles');
+     console.log(this.tracks);
+     console.log(this._trackService.trackList);
+     //this._trackService.currentIndex--;
+   }
+  }
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }
