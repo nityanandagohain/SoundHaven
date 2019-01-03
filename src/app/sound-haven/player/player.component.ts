@@ -2,6 +2,7 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { TrackService } from '../services/tracks/track-service.service';
 import { AnimationComponent } from '../animation/animation.component';
 import { Subscription } from 'rxjs';
+import * as storage from 'electron-json-storage';
 
 @Component({
   selector: 'app-player',

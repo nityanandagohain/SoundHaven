@@ -3,7 +3,7 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
   const path = require('path')
   const url = require('url')
   const fs = require('fs');
-
+  const storage = require('electron-json-storage');
 
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
@@ -99,8 +99,7 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
                 arr.push(filePath[0] + '/' + files[i]);
                 }
             }
-            //console.log("folder");
-            //console.log(files);
+
             win.webContents.send('mp3-file', arr); //sending the opened file to renderer process through ipc renderer via 'mp3-file' event
           });
         }
@@ -121,7 +120,7 @@ const {app, BrowserWindow, dialog, Menu} = require('electron')
           //console.log(filePath);
           arr.push(filePath[0]);
           //console.log(win.webContents);
-          //console.log(arr);
+
           win.webContents.send('mp3-file', arr);  //sending the opened file to renderer process through ipc renderer via 'mp3-file' event
       }
     });
