@@ -38,3 +38,11 @@
     from {transform: rotate(0deg);}
     to {transform: rotate(-360deg);}
 }
+
+
+@media only screen and (min-width: 1000px) {
+.loader-frame{
+    margin-left: 47.8%;
+    margin-bottom: 56px;
+}
+}

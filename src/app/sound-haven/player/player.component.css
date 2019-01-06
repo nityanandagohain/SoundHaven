@@ -5,9 +5,11 @@
 .name{
     text-align: center;
     font-size: 16px;
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'Happy Monkey', cursive;
 }
-
+h3{
+    font-family: 'Happy Monkey', cursive !important;
+}
 .button-row{
     margin-left: 22%;
 }
@@ -49,6 +51,9 @@ mat-grid-list {
 } */
 .bg-trans{
     background: transparent;
+    position: relative;
+    right: 50px;
+
 }
 .main-toolbar{
     margin-top: 60px;
@@ -87,4 +92,16 @@ mat-grid-list {
 
 ::ng-deep .mat-accent .mat-slider-thumb-label-text{
     color: white;
+}
+
+@media only screen and (min-width: 1000px) {
+    .bg-trans{
+        margin-left: 50px;
+        top: -7px;
+        min-height: 258px;
+    }
+    .bottom-card{
+        padding-left: 136px;
+
+    }
 }

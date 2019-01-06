@@ -20,3 +20,20 @@ mat-toolbar {
 ::ng-deep #cdk-overlay-0{
   width: auto !important;
 }
+
+h2{
+  font-family: 'Caveat', cursive;
+    position: relative;
+    left: 30%;
+    letter-spacing: 7px;
+    font-size: 28px;
+}
+
+
+@media only screen and (min-width: 1000px) {
+  
+h2{
+  left:42%;
+}
+
+}
